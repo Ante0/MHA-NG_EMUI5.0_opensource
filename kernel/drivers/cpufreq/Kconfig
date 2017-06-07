@@ -54,6 +54,12 @@ choice
 	  This option sets which CPUFreq governor shall be loaded at
 	  startup. If in doubt, select 'performance'.
 
+config CPU_FREQ_DEFAULT_GOV_INTELLIACTIVE
+	bool "intelliactive"
+	select CPU_FREQ_GOV_INTELLIACTIVE
+	help
+	Use the CPUFreq governor 'intelliactive' as default.
+
 config CPU_FREQ_DEFAULT_GOV_CONSERVATIVEX
 	bool "conservativex"
 	select CPU_FREQ_GOV_CONSERVATIVEX
@@ -74,7 +80,6 @@ config CPU_FREQ_DEFAULT_GOV_INTERACTIVEX
 	  you to get a full dynamic cpu frequency capable system by simply
 	  loading your cpufreq low-level hardware driver, using the
 	  'interactiveX' governor for latency-sensitive workloads.
-
 
 config CPU_FREQ_DEFAULT_GOV_SMARTMAX_EPS
         bool "smartmax_eps"
@@ -154,6 +159,9 @@ config CPU_FREQ_DEFAULT_GOV_SCHED
 	  scheduler.
 
 endchoice
+
+config CPU_FREQ_GOV_INTELLIACTIVE
+	tristate "'intelliactive' cpufreq governor"
 
 config CPU_FREQ_GOV_CONSERVATIVEX
 	tristate "'conservativex' cpufreq governor"
