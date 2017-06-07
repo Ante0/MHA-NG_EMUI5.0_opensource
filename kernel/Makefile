@@ -412,9 +412,9 @@ endif
 KBUILD_CPPFLAGS := -D__KERNEL__
 
 KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs \
-		   -fno-strict-aliasing -fno-common \
-		   -Wno-format-security \
-		   -std=gnu89
+			-fno-strict-aliasing -fno-common \
+			-Wno-format-security \
+			-std=gnu89
 
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
@@ -799,9 +799,10 @@ KBUILD_CFLAGS   += $(call cc-option,-fconserve-stack)
 
 # disallow errors like 'EXPORT_GPL(foo);' with missing header
 
-
 # require functions to have arguments in prototypes, not empty 'int foo()'
 
+#disable warnings!
+KBUILD_CFLAGS += $(call cc-disable-warning, unused-variable)
 
 # Prohibit date/time macros, which would make the build non-deterministic
 #KBUILD_CFLAGS   += $(call cc-option,-Werror=date-time)
